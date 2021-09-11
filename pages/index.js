@@ -31,11 +31,13 @@ export default function Home(props) {
           </div>
         </section>
         <section>
-          <h2>Live Anywhere</h2>
+          <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
 
-          {props.cardsData.map((item) => (
-            <MediumCard />
-          ))}
+          <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
+            {props.cardsData.map((item) => (
+              <MediumCard key={item.img} img={item.img} title={item.title} />
+            ))}
+          </div>
         </section>
       </main>
     </div>
