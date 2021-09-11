@@ -3,6 +3,7 @@ import Head from "next/head";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import SmallCard from "../components/SmallCard";
+import MediumCard from "../components/MediumCard";
 
 export default function Home(props) {
   return (
@@ -29,6 +30,13 @@ export default function Home(props) {
             ))}
           </div>
         </section>
+        <section>
+          <h2>Live Anywhere</h2>
+
+          {props.cardsData.map((item) => (
+            <MediumCard />
+          ))}
+        </section>
       </main>
     </div>
   );
@@ -38,9 +46,13 @@ export async function getStaticProps() {
   const response = await fetch("https://links.papareact.com/pyp");
   const exploreData = await response.json();
 
+  const res = await fetch("https://links.papareact.com/zp1");
+  const cardsData = await res.json();
+
   return {
     props: {
       exploreData,
+      cardsData,
     },
   };
 }
