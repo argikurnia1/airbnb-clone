@@ -44,17 +44,21 @@ function Map(props) {
             </p>
           </Marker>
 
-          {selectedLocation.long === result.long ? (
-            <Popup
-              onClose={() => setSelectedLocation({})}
-              closeOnClick={true}
-              latitude={result.lat}
-              longitude={result.long}
-            >
-              {result.title}
-            </Popup>
+          {selectedLocation ? (
+            selectedLocation.long === result.long ? (
+              <Popup
+                onClose={() => setSelectedLocation({})}
+                closeOnClick={true}
+                latitude={result.lat}
+                longitude={result.long}
+              >
+                {result.title}
+              </Popup>
+            ) : (
+              false
+            )
           ) : (
-            false
+            <div></div>
           )}
         </div>
       ))}
